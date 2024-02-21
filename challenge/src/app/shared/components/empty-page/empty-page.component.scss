@@ -1,0 +1,21 @@
+.card-empty {
+  border: var(--border);
+  border-radius: 8px;
+  background-color: var(--black-900);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  strong {
+    font-size: 1.5rem;
+  }
+
+  a {
+    text-decoration: none;
+    background-color: var(--white);
+    color: var(--black-900);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+  }
+}
