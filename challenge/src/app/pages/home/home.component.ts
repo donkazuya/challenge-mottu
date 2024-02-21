@@ -14,6 +14,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     private service: ServiceService
   ) {}
 
+  characters: Array<any> = []
+
   ngOnInit():void {
     this.getAllCharacters();
   }
@@ -25,11 +27,10 @@ export class HomeComponent implements OnInit, OnDestroy {
       )
       .subscribe({
         next: (response) => {
-          console.log(response);
+          this.characters = response.results
         },
         error: (err) => {
           console.log(err);
-          
         }
       })
   }

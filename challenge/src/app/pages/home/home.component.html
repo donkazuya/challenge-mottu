@@ -6,5 +6,9 @@
     <app-filter></app-filter>
   </div>
 
-  <app-empty-page></app-empty-page>
+  @if(characters.length > 0) {
+    <app-characters-list [charactersList]="characters"></app-characters-list>
+  } @else {
+    <app-empty-page></app-empty-page>
+  }
 </div>

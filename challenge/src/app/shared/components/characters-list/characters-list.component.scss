@@ -1,0 +1,29 @@
+.characters-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px 20px;
+  margin-bottom: 3rem;
+}
+
+.card {
+  border: var(--border);
+  border-radius: 8px;
+  img {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    width: 100%;
+  }
+
+  .info {
+    padding: 0.5rem;
+    .name {
+      font-family: "Creepster", system-ui;
+      font-size: 1.5rem;
+      color: var(--white);
+    }
+    p {
+      font-size: 1rem;
+      color: var(--gray)
+    }
+  }
+}

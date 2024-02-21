@@ -10,12 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class EmptyPageComponent {
   constructor(
     private route: ActivatedRoute,
-  ) {
-    
-    console.log(route.snapshot.routeConfig?.path);
-    
-    
-  }
+  ) {}
 
   isRoute: string | any = this.route.snapshot.routeConfig?.path
 

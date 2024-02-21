@@ -10,6 +10,7 @@ import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FilterComponent } from './shared/components/filter/filter.component';
 import { EmptyPageComponent } from './shared/components/empty-page/empty-page.component';
+import { CharactersListComponent } from './shared/components/characters-list/characters-list.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { EmptyPageComponent } from './shared/components/empty-page/empty-page.co
     HomeComponent,
     FavoritesComponent,
     EmptyPageComponent,
+    CharactersListComponent,
     
   ],
   imports: [
