@@ -39,5 +39,8 @@ export const appReducer = createReducer(
   appInitialState,
   on(addList, (state: any) => {
     return state
+  }),
+  on(removeList, (state: any) => {
+    return state
   })
 )
