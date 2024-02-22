@@ -9,6 +9,7 @@ export class CardCharacterComponent {
   @Input() name: string = ''
   @Input() image: string = ''
   @Input() species: string = ''
+  @Input() type: string = ''
 
   handleFavorite(state: boolean, data: object) {
     

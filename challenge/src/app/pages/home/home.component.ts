@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { ServiceService } from '../../shared/services/service.service';
-import { Character } from '../../models/interfaces/getAllCharacters';
+import { Character, GetAllCharacters } from '../../models/interfaces/CharactersInterface';
+
+
 
 @Component({
   selector: 'app-home',
@@ -36,8 +38,8 @@ export class HomeComponent implements OnInit, OnDestroy {
       })
   }
 
-  handleSearchCharacters(event: string | any) {
-    if(event === '') {
+  handleSearchCharacters(event: GetAllCharacters | null) {
+    if(event === null) {
       this.getAllCharacters()
     }
 

@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { IAppState } from '../../store/app.state';
 import { map } from 'rxjs';
-import { Character } from '../../models/interfaces/getAllCharacters';
+import { Character } from '../../models/interfaces/CharactersInterface';
+
+
 
 @Component({
   selector: 'app-favorites',

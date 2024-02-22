@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Character } from '../../../models/interfaces/getAllCharacters';
+import { Character } from '../../../models/interfaces/CharactersInterface';
+
 
 @Component({
   selector: 'app-characters-list',

@@ -33,7 +33,7 @@ export class SearchComponent {
     }
 
     if(searchCharacter === '') {
-      this.emitSearchCharacters.emit('')
+      this.emitSearchCharacters.emit(null)
     }
   }
 

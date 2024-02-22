@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -6,7 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './button-favorite.component.html',
   styleUrl: './button-favorite.component.scss',
   standalone: true,
-  imports: [MatIconModule]
+  imports: [MatIconModule, CommonModule]
 })
 export class ButtonFavoriteComponent {
 

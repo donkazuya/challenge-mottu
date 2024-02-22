@@ -24,7 +24,7 @@ button {
     -webkit-backdrop-filter: blur(5px);
     transition: all ease .2s;
   }
-  &:hover {
+  &:hover, &.active {
     &::before {
       background: var(--white);
     }
