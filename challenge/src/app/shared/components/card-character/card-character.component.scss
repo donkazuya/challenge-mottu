@@ -1,3 +1,10 @@
+.container-favorite {
+  position: relative;
+  margin-bottom: -2.5rem;
+  display: flex;
+  justify-content: end;
+}
+
 .card {
   border: var(--border);
   border-radius: 8px;

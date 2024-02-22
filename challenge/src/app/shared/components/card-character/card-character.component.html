@@ -1,5 +1,7 @@
 <div class="card">
-  <button>fav</button>
+  <div class="container-favorite">
+    <app-button-favorite></app-button-favorite>
+  </div>
   <img [src]="image" [alt]="name" srcset="">
   <div class="info">
     <p class="name">{{name | slice:0:19}}{{name.length > 19 ? '...' : ''}}</p>

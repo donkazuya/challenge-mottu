@@ -16,6 +16,7 @@ import { StoreModule } from '@ngrx/store';
 import { appReducer } from './store/app.state';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { FavoriteListComponent } from './shared/components/favorite-list/favorite-list.component';
+import { ButtonFavoriteComponent } from './shared/components/button-favorite/button-favorite.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { FavoriteListComponent } from './shared/components/favorite-list/favorit
     HttpClientModule,
     HeaderComponent,
     FilterComponent,
+    ButtonFavoriteComponent,
     StoreModule.forRoot({app: appReducer}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],
