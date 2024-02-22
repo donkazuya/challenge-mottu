@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Character } from '../../../models/interfaces/getAllCharacters';
 
 @Component({
   selector: 'app-favorite-list',
@@ -6,5 +7,5 @@ import { Component, Input } from '@angular/core';
   styleUrl: './favorite-list.component.scss'
 })
 export class FavoriteListComponent {
-  @Input() favoriteList : Array<any> = []
+  @Input() favoriteList : Array<Character> = []
 }

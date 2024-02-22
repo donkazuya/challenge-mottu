@@ -8,7 +8,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
 import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FilterComponent } from './shared/components/filter/filter.component';
+import { SearchComponent } from './shared/components/search/search.component';
 import { EmptyPageComponent } from './shared/components/empty-page/empty-page.component';
 import { CharactersListComponent } from './shared/components/characters-list/characters-list.component';
 import { CardCharacterComponent } from './shared/components/card-character/card-character.component';
@@ -35,7 +35,7 @@ import { ButtonFavoriteComponent } from './shared/components/button-favorite/but
     AppRoutingModule,
     HttpClientModule,
     HeaderComponent,
-    FilterComponent,
+    SearchComponent,
     ButtonFavoriteComponent,
     StoreModule.forRoot({app: appReducer}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })

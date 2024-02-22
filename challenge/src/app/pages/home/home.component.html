@@ -3,7 +3,7 @@
 <div class="container">
   <div class="title">
     <h1 class="title-creep">Inicio</h1>
-    <app-filter (emitSearchCharacters)="handleSeachCharacters($event)"></app-filter>
+    <app-search (emitSearchCharacters)="handleSearchCharacters($event)"></app-search>
   </div>
 
   @if(characters && characters.length > 0) {

@@ -5,21 +5,21 @@ import { MatInputModule } from '@angular/material/input';
 import { ServiceService } from '../../services/service.service';
 
 @Component({
-  selector: 'app-filter',
-  templateUrl: './filter.component.html',
-  styleUrl: './filter.component.scss',
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrl: './search.component.scss',
   standalone: true,
   imports: [FormsModule, MatInputModule, ReactiveFormsModule]
 })
-export class FilterComponent {
+export class SearchComponent {
 
-  filter = new FormControl ('');
+  search = new FormControl ('');
   @Output() emitSearchCharacters = new EventEmitter
 
   constructor(private service:ServiceService) {}
 
   searchCharacter() {
-    const searchCharacter = this.filter.value as string;
+    const searchCharacter = this.search.value as string;
     if(searchCharacter.length > 3) {
       this.service.searchCharacter(searchCharacter)
         .subscribe({

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Character } from '../../../models/interfaces/getAllCharacters';
 
 @Component({
   selector: 'app-characters-list',
@@ -8,6 +9,6 @@ import { Component, Input } from '@angular/core';
 
 
 export class CharactersListComponent {
-  @Input() charactersList : Array<any> = []
+  @Input() charactersList : Array<Character> = []
 
 }
