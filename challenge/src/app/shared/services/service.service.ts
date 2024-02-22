@@ -14,4 +14,8 @@ export class ServiceService {
   getAllCharacters(): Observable<any> {
     return this.http.get(`${this.API_URL}/character`)
   }
+
+  searchCharacter(name: string): Observable<any> {
+    return this.http.get(`${this.API_URL}/character?name=${name}`) 
+  }
 }

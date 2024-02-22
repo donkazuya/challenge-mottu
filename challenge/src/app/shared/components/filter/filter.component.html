@@ -6,6 +6,7 @@
       matInput
       [formControl]="filter"
       placeholder="Informe o nome do personagem!"
+      (keyup)="searchCharacter()"
     />
   </mat-form-field>
 </form>

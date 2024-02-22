@@ -1,5 +1,5 @@
 <div class="characters-container">
-  @for (character of charactersList; track character.id) {
+  @for (character of favoriteList; track character.id) {
     <app-card-character 
       [name]="character.name" 
       [image]="character.image" 

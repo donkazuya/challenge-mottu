@@ -3,6 +3,9 @@
   <div class="title">
     <h1 class="title-creep">Favoritos</h1>
   </div>
-
-  <app-empty-page></app-empty-page>
+  @if(favoriteList && favoriteList.length > 0) {
+    <app-favorite-list [favoriteList]="favoriteList"></app-favorite-list>
+  } @else {
+    <app-empty-page></app-empty-page>
+  }
 </div>

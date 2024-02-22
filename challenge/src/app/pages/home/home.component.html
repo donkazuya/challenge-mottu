@@ -3,10 +3,10 @@
 <div class="container">
   <div class="title">
     <h1 class="title-creep">Inicio</h1>
-    <app-filter></app-filter>
+    <app-filter (emitSearchCharacters)="handleSeachCharacters($event)"></app-filter>
   </div>
 
-  @if(characters.length > 0) {
+  @if(characters && characters.length > 0) {
     <app-characters-list [charactersList]="characters"></app-characters-list>
   } @else {
     <app-empty-page></app-empty-page>

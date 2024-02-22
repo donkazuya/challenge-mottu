@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +11,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { FilterComponent } from './shared/components/filter/filter.component';
 import { EmptyPageComponent } from './shared/components/empty-page/empty-page.component';
 import { CharactersListComponent } from './shared/components/characters-list/characters-list.component';
+import { CardCharacterComponent } from './shared/components/card-character/card-character.component';
+import { StoreModule } from '@ngrx/store';
+import { appReducer } from './store/app.state';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { FavoriteListComponent } from './shared/components/favorite-list/favorite-list.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +25,8 @@ import { CharactersListComponent } from './shared/components/characters-list/cha
     FavoritesComponent,
     EmptyPageComponent,
     CharactersListComponent,
+    CardCharacterComponent,
+    FavoriteListComponent,
     
   ],
   imports: [
@@ -27,7 +34,9 @@ import { CharactersListComponent } from './shared/components/characters-list/cha
     AppRoutingModule,
     HttpClientModule,
     HeaderComponent,
-    FilterComponent
+    FilterComponent,
+    StoreModule.forRoot({app: appReducer}, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],
   providers: [
     provideAnimationsAsync(),

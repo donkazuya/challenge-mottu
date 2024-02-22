@@ -35,6 +35,18 @@ export class HomeComponent implements OnInit, OnDestroy {
       })
   }
 
+  handleSeachCharacters(event: any) {
+    if(event === '') {
+      this.getAllCharacters()
+    }
+
+    if(event) {
+      this.characters = event.results
+    }
+
+    
+  }
+
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
