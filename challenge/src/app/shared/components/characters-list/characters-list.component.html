@@ -2,9 +2,6 @@
   @for (character of charactersList; track character.id) {
     <app-card-character 
       [name]="character.name" 
-      [image]="character.image" 
-      [species]="character.species"
-      [type]="character.type"
       [character]="character"
     ></app-card-character>
   }

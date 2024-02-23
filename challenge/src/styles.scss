@@ -81,6 +81,9 @@ body {
   display: flex;
   justify-content: space-between;
   margin-bottom: 2.25rem;
+  @media (max-width: 500px) {
+    flex-direction: column;
+  }
 }
 
 .characters-container {
@@ -88,6 +91,12 @@ body {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 20px 20px;
   margin-bottom: 3rem;
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (max-width: 500px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 

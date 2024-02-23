@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { MetaReducer, createAction, createReducer, on } from "@ngrx/store"
 import { Character } from "../models/interfaces/CharactersInterface"
+import { actionStore, addCharacter } from "../models/interfaces/StoreInterface"
 
 export interface IAppState {
   favoriteList: Character[]
@@ -17,7 +19,7 @@ export const removeList = createAction('removeList', (characterID) => ({characte
 
 export const appReducer = createReducer(
   appInitialState,
-  on(addList, (state: IAppState, character: any) => {
+  on(addList, (state: IAppState, character: addCharacter) => {
     
     return {...state, favoriteList: [...state.favoriteList, character.character]}
       
@@ -29,7 +31,9 @@ export const appReducer = createReducer(
 )
 
 export function persistStateMetaReducer(reducer: any) {
-  return (state: IAppState, action: any) => {
+  
+  return (state: IAppState, action: actionStore) => {
+    
     const nextState = reducer(state, action);
 
     sessionStorage.setItem('favoriteList', JSON.stringify(nextState.app));

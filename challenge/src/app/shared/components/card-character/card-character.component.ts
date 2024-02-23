@@ -7,9 +7,8 @@ import { Character } from '../../../models/interfaces/CharactersInterface';
   styleUrl: './card-character.component.scss'
 })
 export class CardCharacterComponent {
-  @Input() name: any = ''
-  @Input() image: string | undefined = ''
-  @Input() species: string | undefined = ''
-  @Input() type: string | undefined = ''
-  @Input() character: Character = {}
+  @Input() name: string = ''
+  @Input() character: Character = {
+    name: '',
+  }
 }

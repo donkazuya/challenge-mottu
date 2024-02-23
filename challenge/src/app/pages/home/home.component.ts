@@ -34,6 +34,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         },
         error: (err) => {
           console.log(err);
+          this.characters = []
         }
       })
   }

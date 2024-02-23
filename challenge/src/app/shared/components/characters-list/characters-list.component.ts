@@ -11,5 +11,5 @@ import { Character } from '../../../models/interfaces/CharactersInterface';
 
 export class CharactersListComponent {
   @Input() charactersList : Array<Character> = []
-
+  
 }

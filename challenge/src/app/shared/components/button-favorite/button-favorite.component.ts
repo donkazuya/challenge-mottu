@@ -16,7 +16,9 @@ import { IAppState, addList, removeList } from '../../../store/app.state';
 export class ButtonFavoriteComponent implements OnInit  {
 
   
-  @Input() characterData: Character = {}
+  @Input() characterData: Character = {
+    name: ''
+  }
   @Output() selectedChange = new EventEmitter<boolean>();
 
   favoriteList$: Observable<Array<Character>>;
