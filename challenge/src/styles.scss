@@ -81,6 +81,7 @@ body {
   display: flex;
   justify-content: space-between;
   margin-bottom: 2.25rem;
+  gap: 10px;
   @media (max-width: 500px) {
     flex-direction: column;
   }
