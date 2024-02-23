@@ -33,5 +33,5 @@ export interface infoPaginator {
 
 export interface pagePaginator {
   page: number,
-  itensPerPage: number
+  itensPerPage?: number
 }
