@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatInputModule } from '@angular/material/input';
@@ -15,6 +15,7 @@ export class SearchComponent {
 
   search = new FormControl ('');
   @Output() emitSearchCharacters = new EventEmitter
+  @Output() emitValueSearch = new EventEmitter
 
   constructor(private service:ServiceService) {}
 
@@ -25,6 +26,7 @@ export class SearchComponent {
         .subscribe({
           next: (response) => {
             this.emitSearchCharacters.emit(response)
+            this.emitValueSearch.emit(searchCharacter)
           },
           error: () => {
             this.emitSearchCharacters.emit([])

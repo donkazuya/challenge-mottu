@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { Character, infoPaginator, pagePaginator } from '../../../models/interfaces/CharactersInterface';
 
 
@@ -9,7 +9,7 @@ import { Character, infoPaginator, pagePaginator } from '../../../models/interfa
 })
 
 
-export class CharactersListComponent {
+export class CharactersListComponent implements OnChanges {
   @Input() charactersList : Array<Character> = []
   @Input() infoPaginator : infoPaginator = {
     count: 0,
@@ -17,12 +17,22 @@ export class CharactersListComponent {
     pages: 0,
     prev: null,
   }
+  @Input() returnStart : boolean = false
   @Output() pageSelector = new EventEmitter<number>();
 
-  selectedPaginator: number = 0;
+  selectedPaginator: number = 1;
 
-  handleSelectedPaginator(event: pagePaginator ) {
+  ngOnChanges(): void {
+    setTimeout(() => {
+      if(this.returnStart) {
+        this.selectedPaginator = 1
+      }
+    }, 100);
+  }
+
+  handleSelectedPaginator(event: pagePaginator) {
+
+    this.selectedPaginator = event.page
     this.pageSelector.emit(event.page)
   }
-  
 }

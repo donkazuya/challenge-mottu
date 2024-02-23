@@ -12,6 +12,8 @@ import { Character, GetAllCharacters, infoPaginator } from '../../models/interfa
 })
 export class HomeComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>()
+  valueSearch: string = '';
+  actualPage: boolean = false;
 
   constructor(
     private service: ServiceService
@@ -27,6 +29,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit():void {
     this.getAllCharacters();
+    this.actualPage = false
   }
 
   getAllCharacters() {
@@ -38,6 +41,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         next: (response) => {
           this.infoPaginator = response.info as infoPaginator
           this.characters = response.results
+          this.valueSearch = ''
         },
         error: (err) => {
           console.log(err);
@@ -47,24 +51,39 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   handleSearchCharacters(event: GetAllCharacters | null) {
-    if(event === null) {
+    if(!event) {
       this.getAllCharacters()
+      this.actualPage = true
+      setTimeout(() => {
+        this.actualPage = false
+      }, 400);
     }
 
     if(event) {
+      
+      this.infoPaginator = event.info as infoPaginator
       this.characters = event.results
+      this.actualPage = true
+      setTimeout(() => {
+        this.actualPage = false
+      }, 400);
     }
 
     
   }
 
+  handleValueSearch(event: string) {
+    this.valueSearch = event
+  }
+
   handleCharacterListPaginator(event: number) {
-    this.service.getAllCharactersPerPage(event)
+    this.service.getAllCharactersPerPage(event, this.valueSearch)
       .pipe(
         takeUntil(this.destroy$)
       )
       .subscribe({
         next: (response) => {
+          this.infoPaginator = response.info as infoPaginator
           this.characters = response.results
           window.scrollTo(0, 0);
 

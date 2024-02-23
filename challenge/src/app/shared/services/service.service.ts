@@ -17,11 +17,11 @@ export class ServiceService {
     return this.http.get<GetAllCharacters>(`${this.API_URL}/character`)
   }
 
-  getAllCharactersPerPage(page: number): Observable<GetAllCharacters> {
-    return this.http.get<GetAllCharacters>(`${this.API_URL}/character/?page=${page}`)
+  getAllCharactersPerPage(page: number, character?:string): Observable<GetAllCharacters> {
+    return this.http.get<GetAllCharacters>(`${this.API_URL}/character/?page=${page}&name=${character}`)
   }
 
-  searchCharacter(name: string): Observable<Character> {
-    return this.http.get<Character>(`${this.API_URL}/character?name=${name}`) 
+  searchCharacter(name: string, page?: number,): Observable<Character> {
+    return this.http.get<Character>(`${this.API_URL}/character?name=${name}&page=${page ? page : 1}`) 
   }
 }

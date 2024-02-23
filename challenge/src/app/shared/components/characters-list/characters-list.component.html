@@ -10,7 +10,6 @@
 <div class="d-flex justify-content-center">
   <pagination 
     [boundaryLinks]="true" 
-    [(ngModel)]="selectedPaginator" 
     [maxSize]="8" 
     [totalItems]="infoPaginator.count"
     [itemsPerPage]="20" 
@@ -18,7 +17,8 @@
     nextText="&rsaquo;" 
     firstText="&laquo;" 
     lastText="&raquo;"
-    (pageChanged)="handleSelectedPaginator($event)"
+    (pageChanged)="handleSelectedPaginator($event);"
+    [(ngModel)]="selectedPaginator"
   >
   </pagination>
 </div>
