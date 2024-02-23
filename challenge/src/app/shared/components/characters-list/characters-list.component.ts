@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Character, infoPaginator } from '../../../models/interfaces/CharactersInterface';
+import { Character, infoPaginator, pagePaginator } from '../../../models/interfaces/CharactersInterface';
 
 
 @Component({
@@ -21,7 +21,7 @@ export class CharactersListComponent {
 
   selectedPaginator: number = 0;
 
-  handleSelectedPaginator(event: any) {
+  handleSelectedPaginator(event: pagePaginator ) {
     this.pageSelector.emit(event.page)
   }
   

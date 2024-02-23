@@ -30,3 +30,8 @@ export interface infoPaginator {
   pages: number
   prev: string | null
 }
+
+export interface pagePaginator {
+  page: number,
+  itensPerPage: number
+}
