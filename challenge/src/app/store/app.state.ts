@@ -1,46 +1,40 @@
-import { createAction, createReducer, on } from "@ngrx/store"
+import { MetaReducer, createAction, createReducer, on } from "@ngrx/store"
+import { Character } from "../models/interfaces/CharactersInterface"
 
 export interface IAppState {
-  favoriteList: any[]
+  favoriteList: Character[]
 }
 
-export const appInitialState: IAppState = {
-  favoriteList: [
-    {
-      "id": 2,
-      "name": "Morty Smith",
-      "status": "Alive",
-      "species": "Human",
-      "type": "",
-      "gender": "Male",
-      "origin": {
-          "name": "unknown",
-          "url": ""
-      },
-      "location": {
-          "name": "Citadel of Ricks",
-          "url": "https://rickandmortyapi.com/api/location/3"
-      },
-      "image": "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
-      "episode": [
-          "https://rickandmortyapi.com/api/episode/1",
-      ],
-      "url": "https://rickandmortyapi.com/api/character/2",
-      "created": "2017-11-04T18:50:21.651Z"
-    },
-  ]
+const storage = JSON.parse(sessionStorage.getItem('favoriteList') as string)
+
+export const appInitialState = storage ? storage : {
+  favoriteList: [],
 }
 
-export const addList = createAction('addList')
+export const addList = createAction('addList', (character: Character) => ({character}))
 
-export const removeList = createAction('removeList')
+export const removeList = createAction('removeList', (characterID) => ({characterID}))
 
 export const appReducer = createReducer(
   appInitialState,
-  on(addList, (state: any) => {
-    return state
+  on(addList, (state: IAppState, character: any) => {
+    
+    return {...state, favoriteList: [...state.favoriteList, character.character]}
+      
   }),
-  on(removeList, (state: any) => {
-    return state
+  on(removeList, (state: IAppState, { characterID }) => {
+    const removeCharacter = state.favoriteList.filter((item: Character) => item.id != characterID.id)
+    return {...state, favoriteList: removeCharacter}
   })
 )
+
+export function persistStateMetaReducer(reducer: any) {
+  return (state: IAppState, action: any) => {
+    const nextState = reducer(state, action);
+
+    sessionStorage.setItem('favoriteList', JSON.stringify(nextState.app));
+
+    return nextState;
+  };
+}
+export const metaReducers: MetaReducer<any>[] = [persistStateMetaReducer];

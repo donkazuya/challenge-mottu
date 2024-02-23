@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     private service: ServiceService
   ) {}
 
-  characters: Array<Character> = []
+  characters: Array<Character> | undefined = []
 
   ngOnInit():void {
     this.getAllCharacters();

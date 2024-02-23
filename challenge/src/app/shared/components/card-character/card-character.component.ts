@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Character } from '../../../models/interfaces/CharactersInterface';
 
 @Component({
   selector: 'app-card-character',
@@ -6,12 +7,9 @@ import { Component, Input } from '@angular/core';
   styleUrl: './card-character.component.scss'
 })
 export class CardCharacterComponent {
-  @Input() name: string = ''
-  @Input() image: string = ''
-  @Input() species: string = ''
-  @Input() type: string = ''
-
-  handleFavorite(state: boolean, data: object) {
-    
-  }
+  @Input() name: any = ''
+  @Input() image: string | undefined = ''
+  @Input() species: string | undefined = ''
+  @Input() type: string | undefined = ''
+  @Input() character: Character = {}
 }

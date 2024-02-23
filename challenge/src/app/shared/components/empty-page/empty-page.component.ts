@@ -12,6 +12,6 @@ export class EmptyPageComponent {
     private route: ActivatedRoute,
   ) {}
 
-  isRoute: string | any = this.route.snapshot.routeConfig?.path
+  isRoute: string | undefined = this.route.snapshot.routeConfig?.path
 
 }

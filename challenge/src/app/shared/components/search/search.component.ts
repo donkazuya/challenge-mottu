@@ -26,7 +26,7 @@ export class SearchComponent {
           next: (response) => {
             this.emitSearchCharacters.emit(response)
           },
-          error: (err) => {
+          error: () => {
             this.emitSearchCharacters.emit([])
           }
         })

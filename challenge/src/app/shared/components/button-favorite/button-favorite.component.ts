@@ -1,6 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { Character } from '../../../models/interfaces/CharactersInterface';
+import { IAppState, addList, removeList } from '../../../store/app.state';
 
 @Component({
   selector: 'app-button-favorite',
@@ -9,14 +13,51 @@ import { MatIconModule } from '@angular/material/icon';
   standalone: true,
   imports: [MatIconModule, CommonModule]
 })
-export class ButtonFavoriteComponent {
+export class ButtonFavoriteComponent implements OnInit  {
+
+  
+  @Input() characterData: Character = {}
+  @Output() selectedChange = new EventEmitter<boolean>();
+
+  favoriteList$: Observable<Array<Character>>;
+  favoriteList: Array<Character> = []
+
+  constructor(private store:Store<{app:IAppState}>) {
+    this.favoriteList$ = this.store.select('app', 'favoriteList')
+  }
 
   @Input() selected: boolean = false;
-  @Output() selectedChange = new EventEmitter<boolean>();
 
   toggleSelected() {
     this.selected = !this.selected;
+    if(this.selected) {
+      this.addFavorite()
+    } else {
+      this.removeFavorite()
+    }
     this.selectedChange.emit(this.selected)
+  }
+
+  ngOnInit() {
+    this.favoriteList$.subscribe(data => {
+      this.favoriteList = data
+      if(data.length > 0) {
+        const validate = this.favoriteList.find(f => f.id === this.characterData.id)
+        if(validate) {
+          this.selected = true
+        } 
+      }
+    })
+
+
+  }
+
+  addFavorite() {
+    this.store.dispatch(addList(this.characterData))
+  }
+
+  removeFavorite() {
+    this.store.dispatch(removeList(this.characterData))
   }
 
 }

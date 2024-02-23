@@ -13,7 +13,7 @@ import { EmptyPageComponent } from './shared/components/empty-page/empty-page.co
 import { CharactersListComponent } from './shared/components/characters-list/characters-list.component';
 import { CardCharacterComponent } from './shared/components/card-character/card-character.component';
 import { StoreModule } from '@ngrx/store';
-import { appReducer } from './store/app.state';
+import { appReducer, metaReducers } from './store/app.state';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { FavoriteListComponent } from './shared/components/favorite-list/favorite-list.component';
 import { ButtonFavoriteComponent } from './shared/components/button-favorite/button-favorite.component';
@@ -37,7 +37,7 @@ import { ButtonFavoriteComponent } from './shared/components/button-favorite/but
     HeaderComponent,
     SearchComponent,
     ButtonFavoriteComponent,
-    StoreModule.forRoot({app: appReducer}, {}),
+    StoreModule.forRoot({app: appReducer}, { metaReducers }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],
   providers: [
