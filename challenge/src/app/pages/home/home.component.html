@@ -7,7 +7,7 @@
   </div>
 
   @if(characters && characters.length > 0) {
-    <app-characters-list [charactersList]="characters"></app-characters-list>
+    <app-characters-list [charactersList]="characters" [infoPaginator]="infoPaginator" (pageSelector)="handleCharacterListPaginator($event)"></app-characters-list>
   } @else {
     <app-empty-page></app-empty-page>
   }

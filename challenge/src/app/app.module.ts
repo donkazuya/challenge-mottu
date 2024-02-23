@@ -17,6 +17,8 @@ import { appReducer, metaReducers } from './store/app.state';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { FavoriteListComponent } from './shared/components/favorite-list/favorite-list.component';
 import { ButtonFavoriteComponent } from './shared/components/button-favorite/button-favorite.component';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,9 @@ import { ButtonFavoriteComponent } from './shared/components/button-favorite/but
     HeaderComponent,
     SearchComponent,
     ButtonFavoriteComponent,
+    PaginationModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule,
     StoreModule.forRoot({app: appReducer}, { metaReducers }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],

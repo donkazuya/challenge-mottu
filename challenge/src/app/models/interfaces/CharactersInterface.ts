@@ -23,3 +23,10 @@ export interface GetAllCharacters {
   info?: object;
   results?: Array<Character>
 }
+
+export interface infoPaginator {
+  count: number
+  next: string | null
+  pages: number
+  prev: string | null
+}

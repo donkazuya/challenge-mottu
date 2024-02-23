@@ -17,6 +17,10 @@ export class ServiceService {
     return this.http.get<GetAllCharacters>(`${this.API_URL}/character`)
   }
 
+  getAllCharactersPerPage(page: number): Observable<GetAllCharacters> {
+    return this.http.get<GetAllCharacters>(`${this.API_URL}/character/?page=${page}`)
+  }
+
   searchCharacter(name: string): Observable<Character> {
     return this.http.get<Character>(`${this.API_URL}/character?name=${name}`) 
   }

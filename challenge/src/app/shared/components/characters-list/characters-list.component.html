@@ -6,3 +6,19 @@
     ></app-card-character>
   }
 </div>
+
+<div class="d-flex justify-content-center">
+  <pagination 
+    [boundaryLinks]="true" 
+    [(ngModel)]="selectedPaginator" 
+    [maxSize]="8" 
+    [totalItems]="infoPaginator.count"
+    [itemsPerPage]="20" 
+    previousText="&lsaquo;" 
+    nextText="&rsaquo;" 
+    firstText="&laquo;" 
+    lastText="&raquo;"
+    (pageChanged)="handleSelectedPaginator($event)"
+  >
+  </pagination>
+</div>

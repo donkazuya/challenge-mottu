@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { ServiceService } from '../../shared/services/service.service';
-import { Character, GetAllCharacters } from '../../models/interfaces/CharactersInterface';
+import { Character, GetAllCharacters, infoPaginator } from '../../models/interfaces/CharactersInterface';
 
 
 
@@ -18,6 +18,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   ) {}
 
   characters: Array<Character> | undefined = []
+  infoPaginator: infoPaginator = {
+    count: 0,
+    next: null,
+    pages: 0,
+    prev: null,
+  }
 
   ngOnInit():void {
     this.getAllCharacters();
@@ -30,6 +36,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       )
       .subscribe({
         next: (response) => {
+          this.infoPaginator = response.info as infoPaginator
           this.characters = response.results
         },
         error: (err) => {
@@ -48,6 +55,25 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.characters = event.results
     }
 
+    
+  }
+
+  handleCharacterListPaginator(event: number) {
+    this.service.getAllCharactersPerPage(event)
+      .pipe(
+        takeUntil(this.destroy$)
+      )
+      .subscribe({
+        next: (response) => {
+          this.characters = response.results
+          window.scrollTo(0, 0);
+
+        },
+        error: (err) => {
+          console.log(err);
+          this.characters = []
+        }
+      })
     
   }
 
