@@ -1,45 +1,30 @@
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { HeaderComponent } from './shared/components/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
-import { FavoritesComponent } from './pages/favorites/favorites.component';
-import { HttpClientModule } from '@angular/common/http';
-import { SearchComponent } from './shared/components/search/search.component';
-import { EmptyPageComponent } from './shared/components/empty-page/empty-page.component';
-import { CharactersListComponent } from './shared/components/characters-list/characters-list.component';
-import { CardCharacterComponent } from './shared/components/card-character/card-character.component';
-import { StoreModule } from '@ngrx/store';
+import { SharedModule } from './shared/shared.module';
 import { appReducer, metaReducers } from './store/app.state';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { FavoriteListComponent } from './shared/components/favorite-list/favorite-list.component';
-import { ButtonFavoriteComponent } from './shared/components/button-favorite/button-favorite.component';
-import { PaginationModule } from 'ngx-bootstrap/pagination';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FavoritesComponent } from './pages/favorites/favorites.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    
     HomeComponent,
-    FavoritesComponent,
-    EmptyPageComponent,
-    CharactersListComponent,
-    CardCharacterComponent,
-    FavoriteListComponent,
-    
+    FavoritesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    HeaderComponent,
-    SearchComponent,
-    ButtonFavoriteComponent,
-    PaginationModule.forRoot(),
+    SharedModule,
     FormsModule,
     ReactiveFormsModule,
     StoreModule.forRoot({app: appReducer}, { metaReducers }),
