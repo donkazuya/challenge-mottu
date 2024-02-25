@@ -1,6 +1,4 @@
-import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Character } from '../../../models/interfaces/CharactersInterface';
@@ -10,8 +8,6 @@ import { IAppState, addList, removeList } from '../../../store/app.state';
   selector: 'app-button-favorite',
   templateUrl: './button-favorite.component.html',
   styleUrl: './button-favorite.component.scss',
-  standalone: true,
-  imports: [MatIconModule, CommonModule]
 })
 export class ButtonFavoriteComponent implements OnInit  {
 

@@ -1,27 +1,28 @@
-import { NgModule } from '@angular/core';
-import { EmptyPageComponent } from './components/empty-page/empty-page.component';
-import { CardCharacterComponent } from './components/card-character/card-character.component';
 import { CommonModule } from '@angular/common';
-import { ButtonFavoriteComponent } from './components/button-favorite/button-favorite.component';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+
+import { ButtonFavoriteComponent } from './components/button-favorite/button-favorite.component';
+import { CardCharacterComponent } from './components/card-character/card-character.component';
+import { CharactersListComponent } from './components/characters-list/characters-list.component';
+import { EmptyPageComponent } from './components/empty-page/empty-page.component';
+import { FavoriteListComponent } from './components/favorite-list/favorite-list.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SearchComponent } from './components/search/search.component';
-import { CharactersListComponent } from './components/characters-list/characters-list.component';
-import { FavoriteListComponent } from './components/favorite-list/favorite-list.component';
-import { PaginationModule } from 'ngx-bootstrap/pagination';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 
 @NgModule({
   imports: [
     CommonModule,
-    ButtonFavoriteComponent,
-    HeaderComponent,
-    SearchComponent,
     PaginationModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    MatIconModule,
+    MatInputModule,
   ],
   exports: [
     EmptyPageComponent,
@@ -35,6 +36,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EmptyPageComponent,
     CharactersListComponent,
     FavoriteListComponent,
+    HeaderComponent,
+    SearchComponent,
+    ButtonFavoriteComponent,
     CardCharacterComponent
   ],
   providers: [],
